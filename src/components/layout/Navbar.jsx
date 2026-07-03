@@ -3,6 +3,7 @@ import finddoctor from "../../assets/logos/finddoctor.jpg"
 import Specialties from "../../assets/logos/Specialties.jpg";
 import Hospital from "../../assets/logos/Hospital.jpg";
 import fordoctor from "../../assets/logos/fordoctor.jpg";
+import home from "../../assets/logos/home.jpg";
 function Navbar() {
   return (
     <nav className="w-full ">
@@ -14,7 +15,28 @@ function Navbar() {
         </div>
 
         <div
-          className="group flex items-center ml-108 gap-2 px-4 py-2 rounded-xl
+          className="group flex ml-80 items-center mr-4 gap-2 px-4 py-2 rounded-xl
+             cursor-pointer border border-transparent
+             transition-all duration-300 ease-in-out
+             hover:bg-white
+             hover:border-cyan-200
+             hover:shadow-xl
+             hover:shadow-cyan-300/30
+             hover:-translate-y-1"
+        >
+          <img
+            src={home}
+            alt="Find Doctor"
+            className="w-8 h-8 transition-transform duration-300 group-hover:rotate-6"
+          />
+
+          <h3 className="font-bold text-xl text-gray-800  transition-colors duration-300 group-hover:text-cyan-600">
+            Home
+          </h3>
+        </div>
+
+        <div
+          className="group flex items-center  gap-2 px-4 py-2 rounded-xl
              cursor-pointer border border-transparent
              transition-all duration-300 ease-in-out
              hover:bg-white
