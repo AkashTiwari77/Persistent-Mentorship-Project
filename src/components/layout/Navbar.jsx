@@ -7,9 +7,9 @@ import home from "../../assets/logos/home.jpg";
 function Navbar() {
   return (
     <nav className="w-full ">
-      <div className=" flex items-center gap-1 bg-gradient-to-r from-[#FFFFFF] via-[#98ece5] to-[#8aebdb] border border-[#17aaa5] rounded-3xl shadow-lg h-20 rounded-xl  ">
+      <div className=" flex items-center gap-1 bg-gradient-to-r from-[#FFFFFF] via-[#98ece5] to-[#8aebdb] border border-[#17aaa5] rounded-xl shadow-lg h-20 rounded-xl  ">
         <div className=" flex items-center gap-1  ml-4 font-bold text-2xl">
-          <img src={logo} alt="MediCare Logo" className="w-8 h-8" />
+          <img src={logo} alt="MediCare Logo" className="w-10 h-10" />
           <span className="text-black">Medi</span>
           <span className="text-blue-500">Care</span>
         </div>
