@@ -25,7 +25,7 @@ const Hero = () => {
         </div>
         <div>
           <div className="w-full max-w-4xl bg-white rounded-2xl shadow-xl px-3 py-1 mt-8 mr-2 pr-1 flex items-center justify-between">
-            {/* Search Doctor */}
+           
             <div className="flex items-center flex-1">
               <Search className="text-gray-400 w-5 h-5" />
 
@@ -36,7 +36,7 @@ const Hero = () => {
               />
             </div>
 
-            {/* Divider */}
+           
             <div className="w-px h-10 bg-gray-300 mx-6"></div>
 
             {/* Location */}
@@ -50,7 +50,7 @@ const Hero = () => {
               />
             </div>
 
-            {/* Button */}
+            
             <button className="ml-6 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-2xl font-medium transition">
               Search
             </button>
@@ -125,14 +125,14 @@ const Hero = () => {
         </div>
       </div>
       <div className="relative">
-        {/* Image */}
+        
         <img
           src={homeimage}
           alt="homeimage"
           className="w-[800px] h-[600px] object-cover rounded-3xl ml-30 mt-16"
         />
 
-        {/* Top Right Card */}
+        
         <div className="absolute top-8 right-0 bg-white rounded-2xl shadow-xl px-5 py-4">
           <p className="text-gray-500 text-sm">Patient Satisfaction</p>
 
@@ -144,7 +144,7 @@ const Hero = () => {
           <p className="text-gray-400 text-sm">Based on 48,200 reviews</p>
         </div>
 
-        {/* Bottom Left Card */}
+        
         <div className="absolute bottom-1 pb-1 left-2 bg-white rounded-2xl shadow-xl px-4 py-1   flex items-center gap-4">
           <div className="w-8 h-16 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-2xl">
             ✓
