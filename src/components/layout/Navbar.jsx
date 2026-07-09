@@ -4,6 +4,7 @@ import Specialties from "../../assets/logos/Specialties.jpg";
 import Hospital from "../../assets/logos/Hospital.jpg";
 import fordoctor from "../../assets/logos/fordoctor.jpg";
 import home from "../../assets/logos/home.jpg";
+import { NavLink } from "react-router-dom";
 function Navbar() {
   return (
     <nav className="w-full ">
@@ -35,8 +36,9 @@ function Navbar() {
           </h3>
         </div>
 
-        <div
-          className="group flex items-center  gap-2 px-4 py-2 rounded-xl
+        <NavLink
+          to="/find-doctors"
+          className="group flex items-center gap-2 px-4 py-2 rounded-xl
              cursor-pointer border border-transparent
              transition-all duration-300 ease-in-out
              hover:bg-white
@@ -54,7 +56,7 @@ function Navbar() {
           <h3 className="font-bold text-xl text-gray-800 transition-colors duration-300 group-hover:text-cyan-600">
             Find Doctor
           </h3>
-        </div>
+        </NavLink>
         <div
           className="group flex items-center gap-2 ml-8 px-4 py-2 rounded-xl
              cursor-pointer border border-transparent
