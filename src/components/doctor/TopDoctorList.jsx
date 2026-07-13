@@ -1,7 +1,7 @@
 import topRatedDoctors from "./TopRatedDoctors";
 import DoctorCard from "./DoctorCard";
 
-const DoctorList = () => {
+const TopDoctorList = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {topRatedDoctors.map((doctor) => (
@@ -11,4 +11,4 @@ const DoctorList = () => {
   );
 };
 
-export default DoctorList;
+export default TopDoctorList;

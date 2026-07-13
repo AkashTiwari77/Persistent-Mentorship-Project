@@ -1,5 +1,5 @@
 import logo from "../../assets/logos/logo.png";
-import finddoctor from "../../assets/logos/finddoctor.jpg"
+import finddoctor from "../../assets/logos/finddoctor.jpg";
 import Specialties from "../../assets/logos/Specialties.jpg";
 import Hospital from "../../assets/logos/Hospital.jpg";
 import fordoctor from "../../assets/logos/fordoctor.jpg";
@@ -15,26 +15,22 @@ function Navbar() {
           <span className="text-blue-500">Care</span>
         </div>
 
-        <div
-          className="group flex ml-80 items-center mr-4 gap-2 px-4 py-2 rounded-xl
-             cursor-pointer border border-transparent
-             transition-all duration-300 ease-in-out
-             hover:bg-white
-             hover:border-cyan-200
-             hover:shadow-xl
-             hover:shadow-cyan-300/30
-             hover:-translate-y-1"
-        >
-          <img
-            src={home}
-            alt="Find Doctor"
-            className="w-8 h-8 transition-transform duration-300 group-hover:rotate-6"
-          />
+        <NavLink to="/">
+          <div
+            className="group flex ml-80 items-center mr-4 gap-2 px-4 py-2 rounded-xl
+    cursor-pointer border border-transparent
+    transition-all duration-300 ease-in-out
+    hover:bg-white hover:border-cyan-200
+    hover:shadow-xl hover:shadow-cyan-300/30
+    hover:-translate-y-1"
+          >
+            <img src={home} alt="Home" className="w-8 h-8 object-contain" />
 
-          <h3 className="font-bold text-xl text-gray-800  transition-colors duration-300 group-hover:text-cyan-600">
-            Home
-          </h3>
-        </div>
+            <h3 className="font-bold text-xl text-gray-800 group-hover:text-cyan-600">
+              Home
+            </h3>
+          </div>
+        </NavLink>
 
         <NavLink
           to="/find-doctors"
@@ -57,26 +53,31 @@ function Navbar() {
             Find Doctor
           </h3>
         </NavLink>
-        <div
-          className="group flex items-center gap-2 ml-8 px-4 py-2 rounded-xl
-             cursor-pointer border border-transparent
-             transition-all duration-300 ease-in-out
-             hover:bg-white
-             hover:border-cyan-200
-             hover:shadow-xl
-             hover:shadow-cyan-300/30
-             hover:-translate-y-1"
-        >
-          <img
-            src={Specialties}
-            alt="Specialties"
-            className="w-8 h-8 transition-transform duration-300 group-hover:rotate-6"
-          />
+        <NavLink to="/specialities">
+          <div
+            className="group flex items-center gap-2 ml-4 px-4 py-2 rounded-xl
+    cursor-pointer border border-transparent
+    transition-all duration-300 ease-in-out
+    hover:bg-white
+    hover:border-cyan-200
+    hover:shadow-xl
+    hover:shadow-cyan-300/30
+    hover:-translate-y-1"
+          >
+            <img
+              src={Specialties}
+              alt="Specialities"
+              className="w-8 h-8 transition-transform duration-300 group-hover:rotate-6"
+            />
 
-          <h3 className="font-bold text-xl text-gray-800 transition-colors duration-300 group-hover:text-cyan-600">
-            Specialties
-          </h3>
-        </div>
+            <h3
+              className="font-bold text-xl text-gray-800 transition-colors duration-300
+      group-hover:text-cyan-600"
+            >
+              Specialities
+            </h3>
+          </div>
+        </NavLink>
         <div
           className="group flex items-center gap-2 ml-8 px-4 py-2 rounded-xl
              cursor-pointer border border-transparent
