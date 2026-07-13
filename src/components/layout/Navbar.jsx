@@ -136,24 +136,26 @@ function Navbar() {
           Sign In
         </NavLink>
         <div className="ml-4">
-          <button
-            className="px-5 py-2 rounded-xl
-               bg-white text-cyan-700 font-semibold
-               border border-cyan-500
-               transition-all duration-300 ease-in-out
-               hover:bg-cyan-500
-               hover:text-white
-               hover:shadow-xl
-               hover:shadow-cyan-300/50
-               hover:-translate-y-1
-               active:scale-95
-               focus:outline-none
-               focus:ring-2
-               focus:ring-cyan-300
-               cursor-pointer"
-          >
-            Get Started
-          </button>
+          <NavLink to="/register">
+            <button
+              className="px-5 py-2 rounded-xl
+        bg-white text-cyan-700 font-semibold
+        border border-cyan-500
+        transition-all duration-300 ease-in-out
+        hover:bg-cyan-500
+        hover:text-white
+        hover:shadow-xl
+        hover:shadow-cyan-300/50
+        hover:-translate-y-1
+        active:scale-95
+        focus:outline-none
+        focus:ring-2
+        focus:ring-cyan-300
+        cursor-pointer"
+            >
+              Get Started
+            </button>
+          </NavLink>
         </div>
       </div>
     </nav>
