@@ -78,7 +78,8 @@ function Navbar() {
             </h3>
           </div>
         </NavLink>
-        <div
+        <NavLink
+          to="/hospitals"
           className="group flex items-center gap-2 ml-8 px-4 py-2 rounded-xl
              cursor-pointer border border-transparent
              transition-all duration-300 ease-in-out
@@ -97,7 +98,7 @@ function Navbar() {
           <h3 className="font-bold text-xl text-gray-800 transition-colors duration-300 group-hover:text-cyan-600">
             Hospitals
           </h3>
-        </div>
+        </NavLink>
         <div
           className="group flex items-center gap-2 ml-8 px-4 py-2 rounded-xl
              cursor-pointer border border-transparent
