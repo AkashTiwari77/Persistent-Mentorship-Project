@@ -4,7 +4,8 @@ import Home from "../pages/Home";
 import FindDoctors from "../pages/FindDoctors";
 import Specialities from "../pages/Specialities";
 import Hospitals from "../pages/Hospitals";
-
+import ForDoctors from "../pages/fordoctors";
+import Login from "../pages/Login";
 const AppRoutes = () => {
   return (
     <Routes>
@@ -12,6 +13,8 @@ const AppRoutes = () => {
       <Route path="/find-doctors" element={<FindDoctors />} />
       <Route path="/hospitals" element={<Hospitals />} />
       <Route path="/specialities" element={<Specialities />} />
+      <Route path="/for-doctor" element={<ForDoctors />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
   );
 };
