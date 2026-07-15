@@ -1,10 +1,39 @@
 // import React from 'react'
+import React, { useState } from "react";
+import axios from "axios";
 import { Search, MapPin } from "lucide-react";
 import homeimage from "../../assets/logos/homeimage.jpg"
 const Hero = () => {
+  const [doctorName, setDoctorName] = useState("");
+  const [location, setLocation] = useState("");
+  const [doctorData, setDoctorData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const searchDoctor = async () => {
+    if (!doctorName.trim()) {
+      alert("Please enter a doctor's name");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const response = await axios.get(
+        `http://localhost:5000/api/doctors?name=${encodeURIComponent(doctorName)}`,
+      );
+
+      console.log(response.data);
+
+      setDoctorData(response.data.data);
+    } catch (error) {
+      console.error(error);
+      alert("Doctor not found");
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
-    <div className="bg-gradient-to-r h-220   flex items-center pb-10 pl-44 from-blue-200 via-blue-400 to-blue-500">
-      <div>
+    <div className="flex min-h-220 flex-col items-center gap-12 bg-gradient-to-r from-blue-200 via-blue-400 to-blue-500 px-6 py-16 xl:flex-row xl:gap-8 xl:pb-10 xl:pl-20 2xl:pl-44">
+      <div className="w-full min-w-0 xl:flex-1">
         <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
           <span className="w-2.5 h-2.5 bg-green-400 rounded-full"></span>
 
@@ -13,31 +42,31 @@ const Hero = () => {
           </p>
         </div>
         <div>
-          <h1 className="font-bold text-6xl">
+          <h1 className="text-4xl font-bold sm:text-5xl lg:text-6xl">
             Healthcare that works
             <br /> around your schedule{" "}
           </h1>
         </div>
-        <div className="mt-6 text-xl font-bold">
+        <div className="mt-6 text-lg font-bold sm:text-xl">
           Book appointments with top specialists in seconds.<br></br> Get
           reminders, video consultations, and your <br />
           complete health history — all in one place.
         </div>
         <div>
-          <div className="w-full max-w-4xl bg-white rounded-2xl shadow-xl px-3 py-1 mt-8 mr-2 pr-1 flex items-center justify-between">
-           
+          <div className="mt-8 flex w-full max-w-4xl flex-col gap-4 rounded-2xl bg-white px-4 py-4 shadow-xl sm:flex-row sm:items-center sm:justify-between sm:gap-0 sm:px-3 sm:py-1">
             <div className="flex items-center flex-1">
               <Search className="text-gray-400 w-5 h-5" />
 
               <input
                 type="text"
                 placeholder="Search doctor"
+                value={doctorName}
+                onChange={(e) => setDoctorName(e.target.value)}
                 className="ml-3 w-full outline-none text-gray-700 placeholder:text-gray-400"
               />
             </div>
 
-           
-            <div className="w-px h-10 bg-gray-300 mx-6"></div>
+            <div className="hidden h-10 w-px bg-gray-300 sm:mx-6 sm:block"></div>
 
             {/* Location */}
             <div className="flex items-center flex-1">
@@ -46,16 +75,39 @@ const Hero = () => {
               <input
                 type="text"
                 placeholder="New York, NY"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
                 className="ml-3 w-full outline-none text-gray-700 placeholder:text-gray-400"
               />
             </div>
 
-            
-            <button className="ml-6 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-2xl font-medium transition">
-              Search
+            <button
+              onClick={searchDoctor}
+              className="bg-blue-600 px-8 py-3 font-medium text-white transition hover:bg-blue-700 sm:ml-6 sm:rounded-2xl"
+            >
+              {loading ? "Searching..." : "Search"}
             </button>
           </div>
-          <div className="flex items-center gap-2 mt-6">
+          {doctorData && (
+            <div className="mt-8 bg-white rounded-2xl shadow-lg p-6 max-w-3xl">
+              {doctorData.thumbnail && (
+                <img
+                  src={doctorData.thumbnail.source}
+                  alt={doctorData.title}
+                  className="w-40 h-40 rounded-xl object-cover mb-4"
+                />
+              )}
+
+              <h2 className="text-3xl font-bold">{doctorData.title}</h2>
+
+              <p className="text-blue-600 mt-2 font-semibold">
+                {doctorData.description}
+              </p>
+
+              <p className="text-gray-600 mt-4">{doctorData.extract}</p>
+            </div>
+          )}
+          <div className="mt-6 flex flex-wrap items-center gap-2">
             <div>
               <button className="px-6 py-2 rounded-full bg-[#8AA6FF]/25 border border-[#BFD0FF]/40 text-white shadow-md backdrop-blur-sm">
                 ❤️ Cardiologist
@@ -77,7 +129,7 @@ const Hero = () => {
               </button>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-5 mt-14 max-w-xl">
+          <div className="mt-14 grid max-w-xl grid-cols-1 gap-5 sm:grid-cols-2">
             <div className="flex items-center gap-4 bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-4 shadow-lg hover:scale-105 transition duration-300">
               <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-2xl">
                 👨‍⚕️
@@ -124,16 +176,14 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="relative">
-        
+      <div className="relative w-full xl:w-auto xl:flex-1">
         <img
           src={homeimage}
           alt="homeimage"
-          className="w-[800px] h-[600px] object-cover rounded-3xl ml-30 mt-16"
+          className="mt-0 h-auto w-full rounded-3xl object-cover xl:mt-16 xl:h-[600px] xl:max-w-[800px]"
         />
 
-        
-        <div className="absolute top-8 right-0 bg-white rounded-2xl shadow-xl px-5 py-4">
+        <div className="absolute right-0 top-4 rounded-2xl bg-white px-3 py-3 shadow-xl sm:top-8 sm:px-5 sm:py-4">
           <p className="text-gray-500 text-sm">Patient Satisfaction</p>
 
           <div className="flex items-center gap-2 mt-2">
@@ -144,8 +194,7 @@ const Hero = () => {
           <p className="text-gray-400 text-sm">Based on 48,200 reviews</p>
         </div>
 
-        
-        <div className="absolute bottom-1 pb-1 left-2 bg-white rounded-2xl shadow-xl px-4 py-1   flex items-center gap-4">
+        <div className="absolute bottom-1 left-2 flex items-center gap-2 rounded-2xl bg-white px-3 py-1 shadow-xl sm:gap-4 sm:px-4">
           <div className="w-8 h-16 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-2xl">
             ✓
           </div>

@@ -60,7 +60,7 @@ const ForDoctors = () => {
 
       <section className="bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 text-white py-24">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-6xl font-bold">
+          <h1 className="text-4xl font-bold sm:text-5xl lg:text-6xl">
             Join India's Trusted
             <br />
             Healthcare Network
@@ -71,7 +71,7 @@ const ForDoctors = () => {
             appointments effortlessly.
           </p>
 
-          <div className="flex justify-center gap-6 mt-12">
+          <div className="mt-12 flex flex-col justify-center gap-4 sm:flex-row sm:gap-6">
             <button className="bg-white text-cyan-600 font-bold px-8 py-4 rounded-xl hover:scale-105 transition">
               Register Now
             </button>
@@ -87,7 +87,7 @@ const ForDoctors = () => {
 
       <section className="max-w-7xl mx-auto px-6 py-24">
         <div className="text-center">
-          <h2 className="text-5xl font-bold">Why Join MediCare?</h2>
+          <h2 className="text-3xl font-bold sm:text-5xl">Why Join MediCare?</h2>
 
           <p className="text-gray-500 mt-5 text-lg">
             Everything you need to grow your medical career.
@@ -137,10 +137,10 @@ const ForDoctors = () => {
       {/* CTA */}
 
       <section className="py-24">
-        <div className="max-w-5xl mx-auto bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl text-white p-16 text-center">
+        <div className="mx-6 max-w-5xl bg-gradient-to-r from-cyan-500 to-blue-600 p-8 text-center text-white sm:mx-auto sm:rounded-3xl sm:p-16">
           <CheckCircle className="mx-auto w-16 h-16 mb-8" />
 
-          <h2 className="text-5xl font-bold">Ready to Join?</h2>
+          <h2 className="text-3xl font-bold sm:text-5xl">Ready to Join?</h2>
 
           <p className="mt-6 text-cyan-100 text-lg">
             Become a trusted doctor on MediCare and serve thousands of patients

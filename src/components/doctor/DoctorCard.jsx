@@ -1,16 +1,16 @@
 const DoctorCard = ({ doctor }) => {
   return (
-    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 flex gap-6">
+    <div className="flex flex-col gap-6 rounded-2xl bg-white p-6 shadow-md transition-all duration-300 hover:shadow-xl sm:flex-row">
       {/* Doctor Image */}
       <img
         src={doctor.image}
         alt={doctor.name}
-        className="w-40 h-40 rounded-xl object-cover"
+        className="h-40 w-40 self-center rounded-xl object-cover sm:self-start"
       />
 
       {/* Doctor Details */}
       <div className="flex-1">
-        <div className="flex justify-between items-start">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <h2 className="text-2xl font-bold text-gray-800">{doctor.name}</h2>
 
@@ -32,7 +32,7 @@ const DoctorCard = ({ doctor }) => {
 
         <p className="text-gray-600 mt-2">💰 Consultation Fee : {doctor.fee}</p>
 
-        <div className="flex justify-between items-center mt-6">
+        <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <span className="text-green-600 font-semibold">
             {doctor.availability}
           </span>

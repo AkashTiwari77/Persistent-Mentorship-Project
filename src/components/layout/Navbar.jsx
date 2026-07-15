@@ -7,9 +7,9 @@ import home from "../../assets/logos/home.jpg";
 import { NavLink } from "react-router-dom";
 function Navbar() {
   return (
-    <nav className="w-full ">
-      <div className=" flex items-center gap-1 bg-gradient-to-r from-[#FFFFFF] via-[#98ece5] to-[#8aebdb] border border-[#17aaa5] rounded-xl shadow-lg h-20 rounded-xl  ">
-        <div className=" flex items-center gap-1  ml-4 font-bold text-2xl">
+    <nav className="w-full">
+      <div className="flex min-h-20 flex-wrap items-center  gap-1 rounded-xl border border-[#17aaa5] bg-gradient-to-r from-[#FFFFFF] via-[#98ece5] to-[#8aebdb] px-3 py-3 shadow-lg sm:px-4">
+        <div className="flex items-center gap-1  font-bold text-2xl">
           <img src={logo} alt="MediCare Logo" className="w-10 h-10" />
           <span className="text-black">Medi</span>
           <span className="text-blue-500">Care</span>
@@ -17,14 +17,14 @@ function Navbar() {
 
         <NavLink to="/">
           <div
-            className="group flex ml-80 items-center mr-4 gap-2 px-4 py-2 rounded-xl
+            className="group flex items-center  gap-2 px-3 py-2 rounded-xl sm:ml-auto sm:px-4
     cursor-pointer border border-transparent
     transition-all duration-300 ease-in-out
     hover:bg-white hover:border-cyan-200
     hover:shadow-xl hover:shadow-cyan-300/30
     hover:-translate-y-1"
           >
-            <img src={home} alt="Home" className="w-8 h-8 object-contain" />
+            <img src={home} alt="Home" className="w-8 h-8  ml-80 object-contain" />
 
             <h3 className="font-bold text-xl text-gray-800 group-hover:text-cyan-600">
               Home
@@ -55,7 +55,7 @@ function Navbar() {
         </NavLink>
         <NavLink to="/specialities">
           <div
-            className="group flex items-center gap-2 ml-4 px-4 py-2 rounded-xl
+            className="group flex items-center gap-2 px-3 py-2 rounded-xl sm:px-4
     cursor-pointer border border-transparent
     transition-all duration-300 ease-in-out
     hover:bg-white
@@ -80,7 +80,7 @@ function Navbar() {
         </NavLink>
         <NavLink
           to="/hospitals"
-          className="group flex items-center gap-2 ml-8 px-4 py-2 rounded-xl
+          className="group flex items-center gap-2 px-3 py-2 rounded-xl sm:px-4
              cursor-pointer border border-transparent
              transition-all duration-300 ease-in-out
              hover:bg-white
@@ -101,7 +101,7 @@ function Navbar() {
         </NavLink>
         <NavLink
           to="/for-doctor"
-          className="group flex items-center gap-2 ml-8 px-4 py-2 rounded-xl
+          className="group flex items-center gap-2 px-3 py-2 rounded-xl sm:px-4
              cursor-pointer border border-transparent
              transition-all duration-300 ease-in-out
              hover:bg-white
@@ -131,11 +131,11 @@ function Navbar() {
              hover:shadow-xl
              hover:shadow-cyan-300/50
              hover:-translate-y-1
-             active:scale-95 ml-44"
+             active:scale-95 sm:ml-auto"
         >
           Sign In
         </NavLink>
-        <div className="ml-4">
+        <div className="ml-1 sm:ml-4">
           <NavLink to="/register">
             <button
               className="px-5 py-2 rounded-xl

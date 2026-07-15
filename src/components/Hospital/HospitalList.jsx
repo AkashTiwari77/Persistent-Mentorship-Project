@@ -4,7 +4,7 @@ import HospitalCard from "./HospitalCard";
 const HospitalList = () => {
   return (
     <div className="max-w-7xl mx-auto px-6 py-16">
-      <h1 className="text-5xl font-bold text-center">Top Hospitals in India</h1>
+      <h1 className="text-center text-3xl font-bold sm:text-5xl">Top Hospitals in India</h1>
 
       <p className="text-center text-gray-500 mt-4 mb-14">
         Find India's best hospitals with world-class healthcare services.

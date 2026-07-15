@@ -10,7 +10,7 @@ const CTA = () => {
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="relative overflow-hidden rounded-[40px] bg-gradient-to-r from-blue-600 via-blue-600 to-indigo-700 px-10 py-20 shadow-2xl">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600 via-blue-600 to-indigo-700 px-6 py-12 shadow-2xl sm:rounded-[40px] sm:px-10 sm:py-20">
           {/* Decorative Blur */}
           <div className="absolute -top-24 -left-24 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
           <div className="absolute -bottom-28 -right-20 w-72 h-72 bg-cyan-300/20 rounded-full blur-3xl"></div>
@@ -19,7 +19,7 @@ const CTA = () => {
             {/* Left Content */}
 
             <div className="max-w-2xl">
-              <h2 className="text-5xl font-bold text-white leading-tight">
+              <h2 className="text-3xl font-bold leading-tight text-white sm:text-5xl">
                 Ready to take control
                 <br />
                 of your health?

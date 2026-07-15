@@ -54,9 +54,9 @@ const TopDoctors = () => {
     <section className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
-        <div className="flex items-center justify-between mb-14">
+        <div className="mb-14 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="text-4xl font-bold text-gray-900">
+            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
               Top Rated Doctors
             </h2>
 

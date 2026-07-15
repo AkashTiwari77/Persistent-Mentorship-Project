@@ -30,11 +30,11 @@ const BookingSteps = () => {
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <div className="text-center mb-20">
-          <h2 className="text-5xl font-bold text-gray-900">
+          <h2 className="text-3xl font-bold text-gray-900 sm:text-5xl">
             Book an appointment in 3 steps
           </h2>
 
-          <p className="mt-4 text-lg text-gray-500">
+          <p className="mt-4 text-base text-gray-500 sm:text-lg">
             Simple, fast, and secure — your health journey starts here
           </p>
         </div>
@@ -60,7 +60,7 @@ const BookingSteps = () => {
                 </div>
 
                
-                <h3 className="text-3xl font-semibold text-gray-900 mb-5">
+                <h3 className="mb-5 text-2xl font-semibold text-gray-900 sm:text-3xl">
                   {step.title}
                 </h3>
 

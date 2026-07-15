@@ -83,7 +83,7 @@ const Speciality = () => {
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <div className="text-center">
-          <h2 className="text-5xl font-bold text-gray-900">
+          <h2 className="text-3xl font-bold text-gray-900 sm:text-5xl">
             Browse by Speciality
           </h2>
 
@@ -93,7 +93,7 @@ const Speciality = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mt-16">
+        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8">
           {specialities.map((item) => {
             const Icon = item.icon;
 

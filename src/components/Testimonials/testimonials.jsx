@@ -56,7 +56,7 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <div className="text-center">
-          <h2 className="text-5xl font-bold text-white">What Patients Say</h2>
+          <h2 className="text-3xl font-bold text-white sm:text-5xl">What Patients Say</h2>
 
           <p className="text-blue-100 mt-4 text-lg">
             Real feedback from patients across India
