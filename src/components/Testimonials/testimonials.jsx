@@ -52,13 +52,13 @@ const Testimonials = () => {
   const visibleTestimonials = showAll ? testimonials : testimonials.slice(0, 3);
 
   return (
-    <section className="bg-blue-600 py-24">
+    <section className="bg-gradient-to-br from-[#effbfb] via-[#dff5f3] to-[#c8ebe8] py-24">
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-white sm:text-5xl">What Patients Say</h2>
+          <h2 className="text-3xl font-bold text-slate-800 sm:text-5xl">What Patients Say</h2>
 
-          <p className="text-blue-100 mt-4 text-lg">
+          <p className="mt-4 text-lg text-slate-600">
             Real feedback from patients across India
           </p>
         </div>
@@ -68,7 +68,7 @@ const Testimonials = () => {
           {visibleTestimonials.map((item) => (
             <div
               key={item.id}
-              className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-300"
+              className="rounded-3xl border border-teal-100 bg-white/85 p-8 shadow-md backdrop-blur-md transition-all duration-300 hover:bg-white hover:shadow-lg"
             >
               {/* Stars */}
               <div className="flex gap-1 mb-6">
@@ -82,11 +82,11 @@ const Testimonials = () => {
               </div>
 
               {/* Feedback */}
-              <p className="text-white leading-8">"{item.feedback}"</p>
+              <p className="leading-8 text-slate-600">"{item.feedback}"</p>
 
               {/* User */}
               <div className="flex items-center gap-4 mt-8">
-                <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-white font-bold">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-teal-100 font-bold text-teal-700">
                   {item.name
                     .split(" ")
                     .map((word) => word[0])
@@ -94,9 +94,9 @@ const Testimonials = () => {
                 </div>
 
                 <div>
-                  <h4 className="text-white font-semibold">{item.name}</h4>
+                  <h4 className="font-semibold text-slate-800">{item.name}</h4>
 
-                  <p className="text-blue-100 text-sm">{item.city}</p>
+                  <p className="text-sm text-slate-500">{item.city}</p>
                 </div>
               </div>
             </div>
@@ -107,7 +107,7 @@ const Testimonials = () => {
         <div className="flex justify-center mt-16">
           <button
             onClick={() => setShowAll(!showAll)}
-            className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-gray-100 transition"
+            className="flex items-center gap-2 rounded-full bg-teal-600 px-8 py-3 font-semibold text-white transition hover:bg-teal-700"
           >
             {showAll ? "Show Less" : "View More"}
 

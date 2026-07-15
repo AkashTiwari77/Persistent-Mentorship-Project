@@ -51,7 +51,7 @@ const doctors = [
 
 const TopDoctors = () => {
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="bg-gradient-to-br from-[#eaf7f7] via-[#d9f0ee] to-[#c8e9e7] py-24">
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <div className="mb-14 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
@@ -65,7 +65,7 @@ const TopDoctors = () => {
             </p>
           </div>
 
-          <button className="flex items-center gap-2 border border-gray-300 rounded-full px-6 py-3 hover:bg-blue-600 hover:text-white duration-300">
+          <button className="flex items-center gap-2 rounded-full border border-teal-300 bg-white/70 px-6 py-3 text-teal-800 duration-300 hover:bg-teal-600 hover:text-white">
             View All
             <ArrowRight size={18} />
           </button>
@@ -75,7 +75,7 @@ const TopDoctors = () => {
           {doctors.map((doctor) => (
             <div
               key={doctor.id}
-              className="bg-white rounded-3xl shadow-md border border-gray-100 p-6 hover:shadow-xl duration-300"
+              className="rounded-3xl border border-teal-100 bg-white/90 p-6 shadow-md duration-300 hover:shadow-xl"
             >
               
               <div className="flex items-center gap-4">
@@ -90,7 +90,7 @@ const TopDoctors = () => {
                     {doctor.name}
                   </h3>
 
-                  <p className="text-blue-600 text-sm font-medium">
+                  <p className="text-sm font-medium text-teal-600">
                     {doctor.speciality}
                   </p>
 
@@ -140,7 +140,7 @@ const TopDoctors = () => {
                     View
                   </button>
 
-                  <button className="px-5 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 duration-300">
+                  <button className="rounded-xl bg-teal-600 px-5 py-2 text-white duration-300 hover:bg-teal-700">
                     Book
                   </button>
                 </div>

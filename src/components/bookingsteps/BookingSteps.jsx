@@ -26,7 +26,7 @@ const steps = [
 
 const BookingSteps = () => {
   return (
-    <section className="bg-white py-24">
+    <section className="bg-gradient-to-br from-[#f7fcff] via-[#edfafa] to-[#dff3f1] py-24">
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <div className="text-center mb-20">
@@ -55,7 +55,7 @@ const BookingSteps = () => {
                 </h1>
 
                 
-                <div className="w-16 h-16 rounded-2xl bg-blue-600 shadow-xl flex items-center justify-center mb-8">
+                <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-teal-600 shadow-xl">
                   <Icon className="text-white" size={30} />
                 </div>
 

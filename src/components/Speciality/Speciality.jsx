@@ -79,7 +79,7 @@ const specialities = [
 
 const Speciality = () => {
   return (
-    <section className="py-24 bg-white">
+    <section className="bg-gradient-to-br from-[#f7fcff] via-[#edfafa] to-[#dff3f1] py-24">
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <div className="text-center">
@@ -100,7 +100,7 @@ const Speciality = () => {
             return (
               <div
                 key={item.id}
-                className="bg-white border border-gray-200 rounded-3xl p-6 flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl cursor-pointer"
+                className="flex cursor-pointer flex-col items-center rounded-3xl border border-teal-100 bg-white/90 p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
               >
                 <div
                   className={`w-14 h-14 rounded-2xl flex items-center justify-center ${item.bg}`}
