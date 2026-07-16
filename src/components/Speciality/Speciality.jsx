@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 import {
   Heart,
   Brain,
@@ -15,6 +15,7 @@ const specialities = [
     id: 1,
     title: "Cardiology",
     doctors: "24 doctors",
+    route: "/cardiology",
     icon: Heart,
     bg: "bg-red-50",
     color: "text-red-500",
@@ -81,21 +82,39 @@ const Speciality = () => {
   return (
     <section className="bg-gradient-to-br from-[#f7fcff] via-[#edfafa] to-[#dff3f1] py-24">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Heading */}
         <div className="text-center">
           <h2 className="text-3xl font-bold text-gray-900 sm:text-5xl">
             Browse by Speciality
           </h2>
 
           <p className="mt-5 text-lg text-gray-500 max-w-2xl mx-auto">
-            Find the right specialist for your health needs from our wide
-            network of certified doctors.
+            Find the right specialist for your health needs.
           </p>
         </div>
 
         <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8">
           {specialities.map((item) => {
             const Icon = item.icon;
+
+            if (item.title === "Cardiology") {
+              return (
+                <Link key={item.id} to="/cardiology">
+                  <div className="flex cursor-pointer flex-col items-center rounded-3xl border border-teal-100 bg-white/90 p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                    <div
+                      className={`w-14 h-14 rounded-2xl flex items-center justify-center ${item.bg}`}
+                    >
+                      <Icon className={`w-7 h-7 ${item.color}`} />
+                    </div>
+
+                    <h3 className="mt-5 font-semibold text-gray-800">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-1 text-sm text-gray-500">{item.doctors}</p>
+                  </div>
+                </Link>
+              );
+            }
 
             return (
               <div

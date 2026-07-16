@@ -7,6 +7,7 @@ import Hospitals from "../pages/Hospitals";
 import ForDoctors from "../pages/fordoctors";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import Cardiology from "../features/Cardiology";
 const AppRoutes = () => {
   return (
     <Routes>
@@ -16,7 +17,8 @@ const AppRoutes = () => {
       <Route path="/specialities" element={<Specialities />} />
       <Route path="/for-doctor" element={<ForDoctors />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register/>}/>
+      <Route path="/register" element={<Register />} />
+      <Route path="/cardiology" element={<Cardiology />} />
     </Routes>
   );
 };
