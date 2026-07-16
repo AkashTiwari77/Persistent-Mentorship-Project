@@ -11,6 +11,8 @@ import Cardiology from "../features/Cardiology";
 import Neurology from "../features/Neurology";
 import Pediatrics from "../features/Pediatrics";
 import Orthopedics from "../features/Orthopedics";
+import Dermatology from "../features/Dermatology";
+
 const AppRoutes = () => {
   return (
     <Routes>
@@ -25,6 +27,7 @@ const AppRoutes = () => {
       <Route path="/Neurology" element={<Neurology />} />
       <Route path="/Pediatrics" element={<Pediatrics />} />
       <Route path="/Orthopedics" element={<Orthopedics />} />
+      <Route path="/Dermatology" element={<Dermatology />} />
     </Routes>
   );
 };
