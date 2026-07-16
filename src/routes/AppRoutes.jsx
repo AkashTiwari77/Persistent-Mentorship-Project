@@ -8,6 +8,7 @@ import ForDoctors from "../pages/fordoctors";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Cardiology from "../features/Cardiology";
+import Neurology from "../features/Neurology";
 const AppRoutes = () => {
   return (
     <Routes>
@@ -19,6 +20,7 @@ const AppRoutes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/cardiology" element={<Cardiology />} />
+      <Route path="/Neurology" element={<Neurology   />} />
     </Routes>
   );
 };
