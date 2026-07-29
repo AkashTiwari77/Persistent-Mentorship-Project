@@ -16,6 +16,7 @@ import Gastrology from "../features/Gastrology";
 import Oncology from "../features/Oncology";
 import Radiology from "../features/Radiology";
 import BookAppointment from "../pages/BookAppointment";
+import FooterInfo from "../pages/FooterInfo";
 const AppRoutes = () => {
   return (
     <Routes>
@@ -35,6 +36,15 @@ const AppRoutes = () => {
       <Route path="/Oncology" element={<Oncology />} />
       <Route path="/Radiology" element={<Radiology />} />
       <Route path="/book-appointment" element={<BookAppointment />} />
+      <Route path="/health-records" element={<FooterInfo />} />
+      <Route path="/about" element={<FooterInfo />} />
+      <Route path="/careers" element={<FooterInfo />} />
+      <Route path="/press" element={<FooterInfo />} />
+      <Route path="/contact" element={<FooterInfo />} />
+      <Route path="/privacy" element={<FooterInfo />} />
+      <Route path="/terms" element={<FooterInfo />} />
+      <Route path="/cookies" element={<FooterInfo />} />
+      <Route path="/hipaa-compliance" element={<FooterInfo />} />
     </Routes>
   );
 };

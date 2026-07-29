@@ -1,4 +1,9 @@
 import { Heart, ShieldCheck, Lock } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const platformLinks = [{ label: "Find Doctors", to: "/find-doctors" }, { label: "Book Appointment", to: "/find-doctors" }, { label: "Video Consultation", to: "/find-doctors" }, { label: "Health Records", to: "/health-records" }];
+const companyLinks = [{ label: "About", to: "/about" }, { label: "Careers", to: "/careers" }, { label: "Press", to: "/press" }, { label: "Contact", to: "/contact" }];
+const legalLinks = [{ label: "Privacy Policy", to: "/privacy" }, { label: "Terms of Service", to: "/terms" }, { label: "Cookie Policy", to: "/cookies" }, { label: "HIPAA Compliance", to: "/hipaa-compliance" }];
 
 const Footer = () => {
   return (
@@ -27,23 +32,7 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-semibold mb-6">Platform</h3>
 
-            <ul className="space-y-4 text-gray-400">
-              <li className="hover:text-white cursor-pointer duration-300">
-                Find Doctors
-              </li>
-
-              <li className="hover:text-white cursor-pointer duration-300">
-                Book Appointment
-              </li>
-
-              <li className="hover:text-white cursor-pointer duration-300">
-                Video Consultation
-              </li>
-
-              <li className="hover:text-white cursor-pointer duration-300">
-                Health Records
-              </li>
-            </ul>
+            <FooterLinks links={platformLinks} />
           </div>
 
          
@@ -51,23 +40,7 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-semibold mb-6">Company</h3>
 
-            <ul className="space-y-4 text-gray-400">
-              <li className="hover:text-white cursor-pointer duration-300">
-                About
-              </li>
-
-              <li className="hover:text-white cursor-pointer duration-300">
-                Careers
-              </li>
-
-              <li className="hover:text-white cursor-pointer duration-300">
-                Press
-              </li>
-
-              <li className="hover:text-white cursor-pointer duration-300">
-                Contact
-              </li>
-            </ul>
+            <FooterLinks links={companyLinks} />
           </div>
 
          
@@ -75,23 +48,7 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-semibold mb-6">Legal</h3>
 
-            <ul className="space-y-4 text-gray-400">
-              <li className="hover:text-white cursor-pointer duration-300">
-                Privacy Policy
-              </li>
-
-              <li className="hover:text-white cursor-pointer duration-300">
-                Terms of Service
-              </li>
-
-              <li className="hover:text-white cursor-pointer duration-300">
-                Cookie Policy
-              </li>
-
-              <li className="hover:text-white cursor-pointer duration-300">
-                HIPAA Compliance
-              </li>
-            </ul>
+            <FooterLinks links={legalLinks} />
           </div>
         </div>
 
@@ -126,3 +83,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
+function FooterLinks({ links }) { return <ul className="space-y-4 text-gray-400">{links.map((link) => <li key={link.label}><Link to={link.to} className="transition duration-300 hover:text-white hover:underline hover:underline-offset-4">{link.label}</Link></li>)}</ul>; }
