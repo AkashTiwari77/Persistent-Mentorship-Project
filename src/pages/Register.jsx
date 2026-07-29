@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import {
   ArrowLeft,
   Heart,
@@ -14,13 +16,17 @@ import {
 } from "lucide-react";
 
 export default function MediCareSignup() {
+  const navigate = useNavigate();
+  const { register } = useAuth();
   const [role, setRole] = useState("patient");
+  const [error, setError] = useState("");
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
     phone: "",
+    doctorId: "",
   });
 
   const handleChange = (field) => (e) =>
@@ -28,7 +34,11 @@ export default function MediCareSignup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Create account", { role, ...form });
+    setError("");
+    if (!form.firstName.trim() || !form.lastName.trim() || !form.email.trim() || !form.password || !form.phone.trim()) { setError("Please complete all required account details."); return; }
+    if (form.password.length < 8) { setError("Please use a password with at least 8 characters."); return; }
+    if (role === "doctor" && !form.doctorId.trim()) { setError("Please enter your Doctor ID to create a doctor account."); return; }
+    try { register({ ...form, role }); navigate("/"); } catch (message) { setError(message.message); }
   };
 
   const features = [
@@ -82,13 +92,13 @@ export default function MediCareSignup() {
       {/* Right panel */}
       <div className="flex-1 flex justify-center px-6 py-12">
         <div className="w-full max-w-md">
-          <a
-            href="#"
+          <Link
+            to="/"
             className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-700 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to home
-          </a>
+          </Link>
 
           <h2 className="mt-6 text-3xl font-bold text-slate-900">
             Create your account
@@ -197,6 +207,14 @@ export default function MediCareSignup() {
               </div>
             </div>
 
+            {role === "doctor" && <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1.5">Doctor ID</label>
+              <div className="relative"><Stethoscope className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" /><input type="text" placeholder="e.g. MCI-123456" value={form.doctorId} onChange={handleChange("doctorId")} className="w-full rounded-lg border border-slate-200 pl-10 pr-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" /></div>
+              <p className="mt-1 text-xs text-slate-500">This ID is used to keep doctor and patient accounts separate.</p>
+            </div>}
+
+            {error && <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>}
+
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-1.5">
                 Password
@@ -233,15 +251,15 @@ export default function MediCareSignup() {
               type="submit"
               className="w-full rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 text-sm transition-colors"
             >
-              Create Account
+              Create {role === "doctor" ? "Doctor" : "Patient"} Account
             </button>
           </form>
 
           <p className="mt-6 text-center text-sm text-slate-500">
             Already have an account?{" "}
-            <a href="#" className="text-blue-600 font-medium hover:underline">
+            <Link to="/login" className="text-blue-600 font-medium hover:underline">
               Sign in
-            </a>
+            </Link>
           </p>
         </div>
       </div>

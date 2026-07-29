@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import {
   Heart,
   Mail,
@@ -12,12 +13,19 @@ import {
 } from "lucide-react";
 
 export default function MediCareLogin() {
+  const navigate = useNavigate();
+  const { login } = useAuth();
   const [role, setRole] = useState("Patient");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [keepSignedIn, setKeepSignedIn] = useState(false);
+  const [error, setError] = useState("");
 
-  const roles = ["Patient", "Doctor", "Admin"];
+  const roles = ["Patient", "Doctor"];
+  const handleSubmit = (event) => {
+    event.preventDefault(); setError("");
+    try { login({ email, password, role: role.toLowerCase() }); navigate("/"); } catch (message) { setError(message.message); }
+  };
 
   const features = [
     { icon: CheckCircle2, text: "Instant appointment booking" },
@@ -84,7 +92,7 @@ export default function MediCareLogin() {
           </p>
 
           {/* Role tabs */}
-          <div className="grid grid-cols-3 gap-1 bg-slate-100 rounded-xl p-1 mb-6">
+          <div className="grid grid-cols-2 gap-1 bg-slate-100 rounded-xl p-1 mb-6">
             {roles.map((r) => (
               <button
                 key={r}
@@ -100,6 +108,7 @@ export default function MediCareLogin() {
             ))}
           </div>
 
+          <form onSubmit={handleSubmit}>
           {/* Email */}
           <label className="block text-sm font-medium text-slate-800 mb-1.5">
             Email address
@@ -149,19 +158,21 @@ export default function MediCareLogin() {
             </a>
           </div>
 
+          {error && <p role="alert" className="mb-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>}
           {/* Submit */}
-          <button className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm transition-colors">
+          <button type="submit" className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm transition-colors">
             Sign in to {role.toLowerCase()} portal
           </button>
+          </form>
 
           <p className="text-center text-sm text-slate-500 mt-6">
             Don't have an account?{" "}
-            <a
-              href="#"
+            <Link
+              to="/register"
               className="font-medium text-blue-600 hover:text-blue-700"
             >
               Create account
-            </a>
+            </Link>
           </p>
         </div>
       </div>
