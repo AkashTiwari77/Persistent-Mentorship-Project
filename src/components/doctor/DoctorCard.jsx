@@ -1,3 +1,5 @@
+import BookingButton from "../booking/BookingButton";
+
 const DoctorCard = ({ doctor }) => {
   return (
     <div className="flex flex-col gap-6 rounded-2xl bg-white p-6 shadow-md transition-all duration-300 hover:shadow-xl sm:flex-row">
@@ -37,9 +39,7 @@ const DoctorCard = ({ doctor }) => {
             {doctor.availability}
           </span>
 
-          <button className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-xl font-semibold transition">
-            Book Appointment
-          </button>
+          <BookingButton doctor={doctor} className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-xl font-semibold transition">Book Appointment</BookingButton>
         </div>
       </div>
     </div>

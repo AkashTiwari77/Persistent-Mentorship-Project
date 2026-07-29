@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react";
+import BookingButton from "../components/booking/BookingButton";
 
 
 const SUBSPECIALTIES = [
@@ -202,9 +203,7 @@ function DoctorCard({ doc }) {
         </span>
       </div>
 
-      <button className="mt-4 w-full rounded-xl bg-slate-900 py-2.5 text-sm font-semibold text-white transition group-hover:bg-rose-600">
-        Book appointment
-      </button>
+      <BookingButton doctor={{ ...doc, specialty: "Cardiologist", fee: "₹1,800" }} className="mt-4 w-full rounded-xl bg-slate-900 py-2.5 text-sm font-semibold text-white transition group-hover:bg-rose-600">Book appointment</BookingButton>
     </div>
   );
 }
