@@ -2,31 +2,38 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Search, MapPin } from "lucide-react";
-import homeimage from "../../assets/logos/homeimage.jpg"
+import homeimage from "../../assets/logos/homeimage.jpg";
 const Hero = () => {
   const [doctorName, setDoctorName] = useState("");
   const [location, setLocation] = useState("");
   const [doctorData, setDoctorData] = useState(null);
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const searchDoctor = async () => {
     if (!doctorName.trim()) {
-      alert("Please enter a doctor's name");
+      setError("Please enter a doctor's name.");
+      setDoctorData(null);
       return;
     }
 
     try {
       setLoading(true);
+      setError("");
 
       const response = await axios.get(
         `http://localhost:5000/api/doctors?name=${encodeURIComponent(doctorName)}`,
       );
 
-      console.log(response.data);
-
       setDoctorData(response.data.data);
     } catch (error) {
       console.error(error);
-      alert("Doctor not found");
+      setDoctorData(null);
+
+      if (error.response?.status === 404) {
+        setError("Doctor not found. Please try another name.");
+      } else {
+        setError("Unable to search right now. Please try again later.");
+      }
     } finally {
       setLoading(false);
     }
@@ -90,23 +97,58 @@ const Hero = () => {
           </div>
           {doctorData && (
             <div className="mt-8 bg-white rounded-2xl shadow-lg p-6 max-w-3xl">
-              {doctorData.thumbnail && (
+              {doctorData.doctor.thumbnail && (
                 <img
-                  src={doctorData.thumbnail.source}
-                  alt={doctorData.title}
+                  src={doctorData.doctor.thumbnail.source}
+                  alt={doctorData.doctor.name}
                   className="w-40 h-40 rounded-xl object-cover mb-4"
                 />
               )}
 
-              <h2 className="text-3xl font-bold">{doctorData.title}</h2>
+              <h2 className="text-3xl font-bold">{doctorData.doctor.name}</h2>
 
               <p className="text-blue-600 mt-2 font-semibold">
-                {doctorData.description}
+                {doctorData.doctor.specialty || doctorData.doctor.description}
               </p>
 
-              <p className="text-gray-600 mt-4">{doctorData.extract}</p>
+              <div className="mt-4 space-y-2 text-gray-700">
+                {doctorData.source === "local" ? (
+                  <>
+                    <p>Age: {doctorData.doctor.age}</p>
+                    <p>Experience: {doctorData.doctor.experience} years</p>
+                    <p>Hospital: {doctorData.doctor.hospital}</p>
+                    <p>Location: {doctorData.doctor.location}</p>
+                    <p>{doctorData.doctor.summary}</p>
+                  </>
+                ) : (
+                  <>
+                    <p>{doctorData.doctor.summary}</p>
+                    {doctorData.doctor.wikipediaUrl && (
+                      <p>
+                        <a
+                          href={doctorData.doctor.wikipediaUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-teal-600 underline"
+                        >
+                          View full profile on Wikipedia
+                        </a>
+                      </p>
+                    )}
+                    <p className="text-sm text-gray-500">
+                      {doctorData.doctor.note}
+                    </p>
+                  </>
+                )}
+              </div>
             </div>
           )}
+          {error && (
+            <div className="mt-6 rounded-2xl border border-rose-200 bg-rose-50 px-5 py-4 text-rose-700 shadow-sm">
+              {error}
+            </div>
+          )}
+
           <div className="mt-6 flex flex-wrap items-center gap-2">
             <div>
               <button className="rounded-full border border-teal-200 bg-white/70 px-6 py-2 text-slate-700 shadow-md backdrop-blur-sm">

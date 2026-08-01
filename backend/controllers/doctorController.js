@@ -1,4 +1,4 @@
-const wikipediaService = require("../services/wikipediaService");
+const doctorService = require("../services/doctorService");
 
 const searchDoctors = async (req, res) => {
   try {
@@ -11,7 +11,7 @@ const searchDoctors = async (req, res) => {
       });
     }
 
-    const result = await wikipediaService.searchWikipedia(doctorName);
+    const result = await doctorService.searchDoctors(doctorName);
 
     res.json({
       success: true,
@@ -19,6 +19,13 @@ const searchDoctors = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
+
+    if (error.message === "Doctor not found") {
+      return res.status(404).json({
+        success: false,
+        message: "Doctor not found",
+      });
+    }
 
     res.status(500).json({
       success: false,
