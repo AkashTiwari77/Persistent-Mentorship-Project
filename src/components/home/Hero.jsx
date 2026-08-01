@@ -21,7 +21,7 @@ const Hero = () => {
       setError("");
 
       const response = await axios.get(
-        "https://persistent-mentorship-project.onrender.com/api/doctors",
+        `https://persistent-mentorship-project.onrender.com/api/doctors?name=${encodeURIComponent(doctorName)}`,
       );
 
       setDoctorData(response.data.data);
