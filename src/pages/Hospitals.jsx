@@ -1,4 +1,4 @@
-import HospitalList from "../components/hospital/HospitalList";
+import HospitalList from "../components/Hospital/HospitalList";
 
 const Hospitals = () => {
   return (
