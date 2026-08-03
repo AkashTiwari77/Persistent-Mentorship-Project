@@ -27,7 +27,18 @@ const HospitalCard = ({ hospital }) => {
           <span className="font-semibold">{hospital.rating}</span>
         </div>
 
-        <button className="mt-6 w-full bg-cyan-500 hover:bg-cyan-600 text-white py-3 rounded-xl font-semibold">
+        <button
+          type="button"
+          onClick={() => {
+            const query = `${hospital.name} ${hospital.city} ${hospital.specialty}`;
+            window.open(
+              `https://www.google.com/search?q=${encodeURIComponent(query)}`,
+              "_blank",
+              "noopener,noreferrer"
+            );
+          }}
+          className="mt-6 w-full bg-cyan-500 hover:bg-cyan-600 text-white py-3 rounded-xl font-semibold"
+        >
           View Hospital
         </button>
       </div>
