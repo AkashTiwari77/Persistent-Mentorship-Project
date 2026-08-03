@@ -1,3 +1,4 @@
+import { useState } from "react";
 import logo from "../../assets/logos/logo.png";
 import finddoctor from "../../assets/logos/finddoctor.jpg";
 import Specialties from "../../assets/logos/Specialties.jpg";
@@ -5,20 +6,30 @@ import Hospital from "../../assets/logos/hospital.jpg";
 import fordoctor from "../../assets/logos/fordoctor.jpg";
 import home from "../../assets/logos/home.jpg";
 import { NavLink } from "react-router-dom";
-import { UserRound, LogOut } from "lucide-react";
+import { UserRound, LogOut, Menu, X } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 function Navbar() {
+  const [mobileOpen, setMobileOpen] = useState(false);
   const { user, logout } = useAuth();
   return (
     <nav className="w-full">
-      <div className="flex min-h-20 flex-wrap items-center  gap-1 rounded-xl border border-[#17aaa5] bg-gradient-to-r from-[#FFFFFF] via-[#98ece5] to-[#8aebdb] px-3 py-3 shadow-lg sm:px-4">
-        <div className="flex items-center gap-1  font-bold text-2xl">
+      <div className="flex min-h-20 items-center justify-between rounded-xl border border-[#17aaa5] bg-gradient-to-r from-[#FFFFFF] via-[#98ece5] to-[#8aebdb] px-3 py-3 shadow-lg sm:px-4">
+        <div className="flex items-center gap-1 font-bold text-2xl">
           <img src={logo} alt="MediCare Logo" className="w-10 h-10" />
           <span className="text-black">Medi</span>
           <span className="text-blue-500">Care</span>
         </div>
 
-        <div className="flex flex-1 flex-wrap items-center justify-center gap-1">
+        <button
+          type="button"
+          onClick={() => setMobileOpen((open) => !open)}
+          className="ml-auto rounded-full border border-cyan-300 bg-white p-2 text-cyan-700 sm:hidden"
+          aria-label="Toggle navigation"
+        >
+          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+
+        <div className="hidden flex-1 flex-wrap items-center justify-center gap-1 sm:flex">
           <NavLink to="/">
             <div
               className="group flex items-center gap-2 px-3 py-2 rounded-xl sm:px-4
@@ -160,6 +171,53 @@ function Navbar() {
           </NavLink>
           )}
         </div>
+      </div>
+
+      <div className={`${mobileOpen ? "flex" : "hidden"} flex-col gap-2 px-4 pb-4 sm:hidden`}>
+        <NavLink
+          to="/"
+          onClick={() => setMobileOpen(false)}
+          className="group flex items-center gap-2 rounded-2xl border border-transparent bg-white px-4 py-3 text-gray-800 transition-all duration-300 hover:border-cyan-200 hover:bg-cyan-50"
+        >
+          <img src={home} alt="Home" className="w-6 h-6" />
+          Home
+        </NavLink>
+
+        <NavLink
+          to="/find-doctors"
+          onClick={() => setMobileOpen(false)}
+          className="group flex items-center gap-2 rounded-2xl border border-transparent bg-white px-4 py-3 text-gray-800 transition-all duration-300 hover:border-cyan-200 hover:bg-cyan-50"
+        >
+          <img src={finddoctor} alt="Find Doctor" className="w-6 h-6" />
+          Find Doctor
+        </NavLink>
+
+        <NavLink
+          to="/specialities"
+          onClick={() => setMobileOpen(false)}
+          className="group flex items-center gap-2 rounded-2xl border border-transparent bg-white px-4 py-3 text-gray-800 transition-all duration-300 hover:border-cyan-200 hover:bg-cyan-50"
+        >
+          <img src={Specialties} alt="Specialities" className="w-6 h-6" />
+          Specialities
+        </NavLink>
+
+        <NavLink
+          to="/hospitals"
+          onClick={() => setMobileOpen(false)}
+          className="group flex items-center gap-2 rounded-2xl border border-transparent bg-white px-4 py-3 text-gray-800 transition-all duration-300 hover:border-cyan-200 hover:bg-cyan-50"
+        >
+          <img src={Hospital} alt="Hospitals" className="w-6 h-6" />
+          Hospitals
+        </NavLink>
+
+        <NavLink
+          to="/for-doctor"
+          onClick={() => setMobileOpen(false)}
+          className="group flex items-center gap-2 rounded-2xl border border-transparent bg-white px-4 py-3 text-gray-800 transition-all duration-300 hover:border-cyan-200 hover:bg-cyan-50"
+        >
+          <img src={fordoctor} alt="For Doctor" className="w-6 h-6" />
+          For Doctor
+        </NavLink>
       </div>
     </nav>
   );
