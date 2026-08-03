@@ -6,6 +6,7 @@ import {
   ArrowRight,
   CheckCircle,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const benefits = [
   {
@@ -72,13 +73,17 @@ const ForDoctors = () => {
           </p>
 
           <div className="mt-12 flex flex-col justify-center gap-4 sm:flex-row sm:gap-6">
-            <button className="bg-white text-cyan-600 font-bold px-8 py-4 rounded-xl hover:scale-105 transition">
-              Register Now
-            </button>
+            <Link to="/login" className="w-full sm:w-auto">
+              <button className="w-full bg-white text-cyan-600 font-bold px-8 py-4 rounded-xl hover:scale-105 transition">
+                Register Now
+              </button>
+            </Link>
 
-            <button className="border-2 border-white px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-cyan-600 transition">
-              Doctor Login
-            </button>
+            <Link to="/login" className="w-full sm:w-auto">
+              <button className="w-full border-2 border-white px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-cyan-600 transition">
+                Doctor Login
+              </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -147,10 +152,12 @@ const ForDoctors = () => {
             every day.
           </p>
 
-          <button className="mt-10 bg-white text-cyan-600 font-bold px-8 py-4 rounded-xl inline-flex items-center gap-2 hover:scale-105 transition">
-            Register Today
-            <ArrowRight />
-          </button>
+          <Link to="/login" className="inline-flex w-full justify-center sm:w-auto">
+            <button className="mt-10 bg-white text-cyan-600 font-bold px-8 py-4 rounded-xl inline-flex items-center gap-2 hover:scale-105 transition">
+              Register Today
+              <ArrowRight />
+            </button>
+          </Link>
         </div>
       </section>
     </div>
