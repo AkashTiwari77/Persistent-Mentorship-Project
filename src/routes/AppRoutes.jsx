@@ -4,7 +4,7 @@ import Home from "../pages/Home";
 import FindDoctors from "../pages/FindDoctors";
 import Specialities from "../pages/Specialities";
 import Hospitals from "../pages/Hospitals";
-import ForDoctors from "../pages/fordoctors";
+import ForDoctors from "../pages/ForDoctors";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Cardiology from "../features/Cardiology";
