@@ -1,7 +1,7 @@
 import logo from "../../assets/logos/logo.png";
 import finddoctor from "../../assets/logos/finddoctor.jpg";
 import Specialties from "../../assets/logos/Specialties.jpg";
-import Hospital from "../../assets/logos/Hospital.jpg";
+import Hospital from "../../assets/logos/hospital.jpg";
 import fordoctor from "../../assets/logos/fordoctor.jpg";
 import home from "../../assets/logos/home.jpg";
 import { NavLink } from "react-router-dom";
