@@ -1,23 +1,35 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
+
+require("./config/db");
+
+
 const doctorRoutes = require("./routes/doctorRoutes");
+const hospitalRoutes = require("./routes/hospitalRoutes");
+const specialityRoutes = require("./routes/specialityRoutes"); // ✅ ADD THIS
 
 const app = express();
 const PORT = 5000;
 
-// Middleware
+console.log("Backend folder:", __dirname);
+console.log("Public folder:", path.join(__dirname, "../public"));
+
 app.use(cors());
 app.use(express.json());
 
-// Doctor Routes
-app.use("/api/doctors", doctorRoutes);
+// Serve everything inside public
+app.use(express.static(path.join(__dirname, "../public")));
 
-// Test Route
+// API Routes
+app.use("/api/doctors", doctorRoutes);
+app.use("/api/hospitals", hospitalRoutes);
+app.use("/api/specialities", specialityRoutes); // ✅ ADD THIS
+
 app.get("/", (req, res) => {
-  res.send("Backend is Running 🚀");
+  res.send("Backend Running 🚀");
 });
 
-// Start Server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });

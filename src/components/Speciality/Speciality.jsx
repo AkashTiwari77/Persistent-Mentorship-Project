@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import {
   Heart,
@@ -10,82 +12,47 @@ import {
   Stethoscope,
 } from "lucide-react";
 
-const specialities = [
-  {
-    id: 1,
-    title: "Cardiology",
-    doctors: "24 doctors",
-    route: "/cardiology",
-    icon: Heart,
-    bg: "bg-red-50",
-    color: "text-red-500",
-  },
-  {
-    id: 2,
-    title: "Neurology",
-    doctors: "18 doctors",
-    route: "/neurology",
-    icon: Brain,
-    bg: "bg-purple-50",
-    color: "text-purple-500",
-  },
-  {
-    id: 3,
-    title: "Pediatrics",
-    doctors: "31 doctors",
-    route: "/pediatrics",
-    icon: Baby,
-    bg: "bg-green-50",
-    color: "text-green-500",
-  },
-  {
-    id: 4,
-    title: "Orthopedics",
-    doctors: "15 doctors",
-    route: "/orthopedics",
-    icon: Bone,
-    bg: "bg-orange-50",
-    color: "text-orange-500",
-  },
-  {
-    id: 5,
-    title: "Dermatology",
-    doctors: "22 doctors",
-    route: "/dermatology",
-    icon: Shield,
-    bg: "bg-pink-50",
-    color: "text-pink-500",
-  },
-  {
-    id: 6,
-    title: "Gastrology",
-    doctors: "12 doctors",
-    route: "/gastrology",
-    icon: Pill,
-    bg: "bg-cyan-50",
-    color: "text-cyan-500",
-  },
-  {
-    id: 7,
-    title: "Oncology",
-    doctors: "9 doctors",
-    route: "/oncology",
-    icon: BadgePlus,
-    bg: "bg-blue-50",
-    color: "text-blue-500",
-  },
-  {
-    id: 8,
-    title: "Radiology",
-    doctors: "17 doctors",
-    route: "/radiology",
-    icon: Stethoscope,
-    bg: "bg-indigo-50",
-    color: "text-indigo-500",
-  },
-];
+const iconMap = {
+  Heart,
+  Brain,
+  Baby,
+  Bone,
+  Shield,
+  Pill,
+  BadgePlus,
+  Stethoscope,
+};
 
 const Speciality = () => {
+  const [specialities, setSpecialities] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchSpecialities = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/specialities",
+        );
+
+        setSpecialities(response.data.data);
+      } catch (error) {
+        console.error("Error fetching specialities:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSpecialities();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="text-center py-20 text-xl font-semibold">
+        Loading Specialities...
+      </div>
+    );
+  }
+
   return (
     <section className="bg-gradient-to-br from-[#f7fcff] via-[#edfafa] to-[#dff3f1] py-24">
       <div className="max-w-7xl mx-auto px-6">
@@ -101,7 +68,7 @@ const Speciality = () => {
 
         <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8">
           {specialities.map((item) => {
-            const Icon = item.icon;
+            const Icon = iconMap[item.icon];
 
             return (
               <Link key={item.id} to={item.route} className="block">
@@ -109,7 +76,7 @@ const Speciality = () => {
                   <div
                     className={`w-14 h-14 rounded-2xl flex items-center justify-center ${item.bg}`}
                   >
-                    <Icon className={`w-7 h-7 ${item.color}`} />
+                    {Icon && <Icon className={`w-7 h-7 ${item.color}`} />}
                   </div>
 
                   <h3 className="mt-5 font-semibold text-gray-800">

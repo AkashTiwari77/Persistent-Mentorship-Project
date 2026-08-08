@@ -1,8 +1,13 @@
 const express = require("express");
-const doctorController = require("../controllers/doctorController");
 
 const router = express.Router();
 
-router.get("/", doctorController.searchDoctors);
+const doctorController = require("../controllers/doctorController");
+
+// Get all doctors
+router.get("/", doctorController.getAllDoctors);
+
+// Search doctors
+router.get("/search", doctorController.searchDoctors);
 
 module.exports = router;

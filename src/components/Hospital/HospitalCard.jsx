@@ -10,7 +10,7 @@ const HospitalCard = ({ hospital }) => {
       />
 
       <div className="p-5">
-        <h2 className="text-xl font-bold text-gray-800">{hospital.name}</h2>
+        <h2 className="text-xl font-bold">{hospital.name}</h2>
 
         <div className="flex items-center mt-2 text-gray-500">
           <MapPin className="w-4 h-4 mr-2 text-blue-600" />
@@ -22,22 +22,21 @@ const HospitalCard = ({ hospital }) => {
           {hospital.specialty}
         </div>
 
-        <div className="flex items-center mt-4">
-          <Star className="w-5 h-5 fill-yellow-400 text-yellow-400 mr-2" />
-          <span className="font-semibold">{hospital.rating}</span>
+        <div className="flex items-center mt-3">
+          <Star className="w-5 h-5 text-yellow-400 fill-yellow-400 mr-2" />
+          <span>{hospital.rating}</span>
         </div>
 
         <button
-          type="button"
-          onClick={() => {
-            const query = `${hospital.name} ${hospital.city} ${hospital.specialty}`;
+          className="mt-5 w-full bg-cyan-500 hover:bg-cyan-600 text-white py-2 rounded-lg"
+          onClick={() =>
             window.open(
-              `https://www.google.com/search?q=${encodeURIComponent(query)}`,
+              `https://www.google.com/search?q=${encodeURIComponent(
+                hospital.name,
+              )}`,
               "_blank",
-              "noopener,noreferrer"
-            );
-          }}
-          className="mt-6 w-full bg-cyan-500 hover:bg-cyan-600 text-white py-3 rounded-xl font-semibold"
+            )
+          }
         >
           View Hospital
         </button>
